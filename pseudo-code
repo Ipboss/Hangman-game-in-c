@@ -49,15 +49,56 @@ int wordcount (void)
 	2.1. ask the user to choose which word (e.g. between 1-15)
 		2.1.1. adjust for wrong input (e.g. 30) by asking the user to input the right number
 
-3. Decryption of the words
-	3.1. open the wordbank
-	3.2. read a line 
-	3.3. store the shift integer 
-	3.4. read the following letters one after another
-	3.5. store it as a character and
-	3.5. transform each character by the shift integer
-	3.6. stop at the end of the line
-	3.7. close file
+3. Decryption of one line of the word
+
+/* Part two
+   1. decrypte the words
+   2. assign them a number
+*/
+
+char shift(char letter, int shift)
+
+{
+	int i = 0;
+	int shift;
+	char letter, decrletter;
+	FILE *ifile;
+	
+	ifile=fopen("wordbank.txt", "r");   /* open the file to read it */
+	fscanf(ifile,"%d", &shift);         /* read the integer at the beginning of the line */
+	
+	printf("the shift number is %d\n", shift);
+	
+	printf("the decrypted word is");
+	
+	fscanf(ifile, " ");                 /* skip white-space */
+
+	 /* before the line ends -- or new line starts */
+	
+	for (i = 0;i<=10;i++) {         
+	
+		fscanf(ifile, "%c", &letter);     /* read and store a letter from the line */
+	
+	   /* printf("the initial letter is %c\n", letter); */
+		
+		if (letter != '\n'){
+		
+		decrletter = letter - shift;  /* decryption algorithm */
+	
+		/* printf("the decrypted letter is %c\n", decrletter); */
+		
+		printf("%c", decrletter);
+		
+		} else break;   /* end loop when it reaches the end of the line */
+	}
+	
+	fclose (ifile);  /* close the file */
+	
+	printf("\nthe counter is %d\n", i);  /*the number of characters to guess*/
+	
+	return (0);
+}
+	
 
 4. Locate the appropriate word (e.g. word #3)
 	4.1. open the file
