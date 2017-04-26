@@ -105,6 +105,21 @@ char shift(char letter, int shift)
 	4.2. read line after line 
 	4.3. stop after the n times (n being the entered number)
 	4.4. close file
+	
+(void) locate(int a);
+
+(void) locate(int a)
+{
+	int a; 
+	
+	ifile=fopen("wordbank.txt", "r");        /* open the file to read it */
+	
+	while ((fscanf(ifile,"%c", &newl)) != EOF){ 
+       		if (newl == '\n')
+	
+	
+
+
 
 6. Let the game begin 
 
